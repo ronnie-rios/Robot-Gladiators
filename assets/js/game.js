@@ -1,3 +1,8 @@
+//game states
+// "Win" - player has defeated all enemy robots
+//      *Fight all enemy robots
+//      *defeat all enemy robots
+//"Lose" - Payer robot's health is zero or less
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
@@ -5,11 +10,12 @@ var playerMoney = 10;
 
 console.log(playerName, playerAttack, playerHealth);
 
-var enemyName = "Roborto";
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-var fight = function() {
+
+var fight = function(enemyName) {
     //alert players the round has started//
     window.alert("The fight has begun!");
 
@@ -44,7 +50,7 @@ var fight = function() {
     //if player choose to skip
     } else if (promptFight==="skip" || promptFight === "SKIP") {
         //confirm player wants to skip
-        var confirmSkip = window.confirm("Are you sure you'd oyu like to quit?");
+        var confirmSkip = window.confirm("Are you sure you'd like to quit?");
         //if yes (true), leave fight
         if (confirmSkip) {
             window.alert(playerName + " has decided to skip this fight. Goodbye!");
@@ -62,4 +68,7 @@ var fight = function() {
 };
 
 
-fight();
+for(var i = 0; i < enemyNames.length; i++) {
+    fight(enemyNames[i]);
+}
+ 
