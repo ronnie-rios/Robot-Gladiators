@@ -1,6 +1,7 @@
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
+var playerMoney = 10;
 
 console.log(playerName, playerAttack, playerHealth);
 
@@ -12,6 +13,11 @@ var fight = function() {
     //alert players the round has started//
     window.alert("The fight has begun!");
 
+    var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
+
+//if player choose to fight, then fight
+
+    if (promptFight === "fight" || promptFight === "FIGHT") {
     //subract value of "playerAttack" from value of "enemyHealth" and use result to update value in the "enemyHealth" var//
     enemyHealth = enemyHealth - playerAttack;
     // log a resulting message to console so we know it worked.
@@ -34,6 +40,24 @@ var fight = function() {
     else {
     window.alert(playerName + " still has " + playerHealth + " health left.");
      }
+    
+    //if player choose to skip
+    } else if (promptFight==="skip" || promptFight === "SKIP") {
+        //confirm player wants to skip
+        var confirmSkip = window.confirm("Are you sure you'd oyu like to quit?");
+        //if yes (true), leave fight
+        if (confirmSkip) {
+            window.alert(playerName + " has decided to skip this fight. Goodbye!");
+            playerMoney = playerMoney - 2;
+        }
+        //if no (false), ask question again by runing fight() again
+        else {
+            fight();
+        }
+        window.alert(playerName + " has chosen to skip the fight!");
+    } else {
+        window.alert("You need to choose a valid option. Try again!")
+    }
 
 };
 
