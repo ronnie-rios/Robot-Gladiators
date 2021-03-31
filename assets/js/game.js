@@ -18,6 +18,17 @@ var enemyAttack = 12;
 var fight = function(enemyName) {
     //alert players the round has started//
     while(enemyHealth > 0 && enemyHealth > 0) {
+    
+    if (playerHealth >  0) {
+        window.alert("Welcome to Robot Gladiators!" + ( i + 1));
+        var pickedEnemyName = enemyNames[i];
+        enemyHealth = 50;
+        fight(pickedEnemyName);
+    }
+    else {
+        window.alert("You have lost your robot in battle! Game over.");
+        break;
+    }
       if (promptFight === "fight" || promptFight === "FIGHT") {
     //subract value of "playerAttack" from value of "enemyHealth" and use result to update value in the "enemyHealth" var//
     enemyHealth = enemyHealth - playerAttack;
