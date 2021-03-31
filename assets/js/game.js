@@ -14,7 +14,12 @@ console.log(enemyNames.length);
 console.log(enemyNames[0]);
 console.log(enemyNames[3]);
 
+ 
 var fight = function(enemyName) {
+  //  reset player stats
+  playerHealth = 100;
+  playerAttack =10;
+  playerMoney = 10;
     //alert players the round has started//
     while (playerHealth > 0 && enemyHealth > 0) {
         // ask player if they'd like to fight or run
@@ -70,7 +75,8 @@ var fight = function(enemyName) {
   }
 };
 
-// fight each enemy-robot by looping over them and fighting them one at a time
+var startGame = function() {
+   // fight each enemy-robot by looping over them and fighting them one at a time
 for (var i = 0; i < enemyNames.length; i++) {
   // if player is still alive, keep fighting
   if (playerHealth > 0) {
@@ -94,4 +100,24 @@ for (var i = 0; i < enemyNames.length; i++) {
     window.alert('You have lost your robot in battle! Game Over!');
     break;
   }
+} endGame();
+} 
+
+var endGame = function () {
+    window.alert("The game has now ended. Let's see how you did!");
+        if (playerHealth > 0) {
+            window.alert("Great job, you've survived the game! You know have a score of" + playerMoney + ".");
+        }
+        else {
+            window.alert("You've lost your robot in battle.")
+        }
 }
+
+var playAgainConfirm = window.confirm("Would you like to play again?");
+    if(playAgainConfirm) {
+        startGame();
+    }
+    else {
+        window.alert("Thanks for playing! Come back soon!");
+    }
+startGame();
